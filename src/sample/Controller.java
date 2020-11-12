@@ -6,8 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Controller {
 
@@ -20,19 +23,12 @@ public class Controller {
     int minIndex = 0;
     int counter = 0;
     double temp = 0;
+    double randHeight=0;
 
     public static ArrayList<Rectangle> RectList = new ArrayList<Rectangle>();
     double[] RectHeight;
 
 
-    public void RectUpdater() {
-
-
-        Rectangle temp = RectList.get(1);
-        System.out.println(temp.getHeight());
-
-
-    }
 
     @FXML
     public void randomHeight() {
@@ -43,7 +39,7 @@ public class Controller {
 
         for (Rectangle rect : RectList
         ) {
-            double randHeight = Math.random() * (max - min + 1) + min;
+            randHeight = Math.random() * (max - min + 1) + min;
             RectHeight[i] = randHeight;
             rect.setHeight(randHeight);
             i++;
@@ -102,6 +98,7 @@ public class Controller {
 
     }
 
+
     public void updateHeight() {
         temp = RectHeight[counter];
         RectHeight[counter] = RectHeight[minIndex];
@@ -116,4 +113,5 @@ public class Controller {
         minIndex = counter;
 
     }
+
 }
